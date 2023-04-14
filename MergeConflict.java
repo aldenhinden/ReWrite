@@ -1,4 +1,4 @@
 public class MergeConflict {
     private String merge;
-    private String conflict; // change this value!
+    private String conflict2; // change this value!
 }
