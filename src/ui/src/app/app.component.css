@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    background-color: #486673;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 8vh;
+}
+
+nav h4 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+nav > div > ul li {
+    list-style: none;
+}
+
+nav > div > ul a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+
