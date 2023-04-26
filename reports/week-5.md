@@ -21,14 +21,14 @@ Responsibility:
     - Progress Update: Set up the foundation for Angular and finished implementing the navigation bar for all the webpages so that users can visit the Home, Translation and Link Key page. Learned that making the website pretty is currently too difficult and should implement the barebone skeleton so that individuals can begin working. Currently am stuck on understanding the Components and routing on Angular.
 
     - Last Week's Goals:
-    1. Set up Angular for Git repo ✔️
-    2. Implement navigation bar ✔️
+        - Set up Angular for Git repo ✔️
+        - Implement navigation bar ✔️
 
 
     - This Week's Goals:
-    1. Implement barebone skeleton of the Home and Translation page (ETA: 7 days)
-    2. Begin researching on how to save cookies (ETA: 1-2 days)
-    3. Improve styling on the webpages (ETA: N/A)
+        - Implement barebone skeleton of the Home and Translation page (ETA: 7 days)
+        - Begin researching on how to save cookies (ETA: 1-2 days)
+        - Improve styling on the webpages (ETA: N/A)
 
 
 2. Alden Hinden
