@@ -10,11 +10,11 @@ Long-Term Goal: Design and implement all webpages so that individuals can begin 
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress:
+Progress: Initial progress on webscraping PDFs. 
 
-Long-Term Goal:
+Long-Term Goal: Complete full webscraping implementation and integrate with front-end so users may upload PDFs for scraping.
 
-Responsibility: 
+Responsibility: Alden, Yusuf
 
 ## Contributions
 1. John Li
