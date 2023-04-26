@@ -32,12 +32,14 @@ Responsibility:
 
 
 2. Alden Hinden
-    - Progress Update:
+    - Progress Update: Began sample implementations of webscraping services, experimenting with JavaScript and made some progress learning how to use the Node.js library, specifically integrating Express.js in order to implement basic PDF webscraping. Learned that full website webscraping will be potentially too difficult to implement quickly enough, and we will probably stick to simple PDF uploads for scraping. 
 
     - Last Week's Goals:
-
+        - Decide the bounds and framework for webscraping ✔️
+        - Begin basic PDF webscraping ✔️
 
     - This Week's Goals
+        - Full implementation of PDF webscraping using Express, Node.js and its libraries such as pdf-parse ✔️
 
 
 3. Yusuf Farah
