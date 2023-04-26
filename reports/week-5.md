@@ -53,8 +53,11 @@ Responsibility: Alden, Yusuf
 
 4. Ben Ihrig
     - Progress Update:
+        -Played around with getting simplified/summarized text from ChatGPT to get a sense for how things will go, read up on tips/tricks for how to get good performance out of GPT3.5
 
     - Last Week's Goals:
-
+        - Prompt engineering research ✔️
 
     - This Week's Goals
+        - Compile testing suite of 10 research papers and 10 complex blog posts
+        - Write js code to run the tests by calling GPT
