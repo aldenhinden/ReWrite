@@ -25,14 +25,34 @@ Responsibility:
     2. Implement navigation bar ✔️
 
 
-    - This Week's Goals
+    - This Week's Goals:
     1. Implement barebone skeleton of the Home and Translation page (ETA: 7 days)
     2. Begin researching on how to save cookies (ETA: 1-2 days)
     3. Improve styling on the webpages (ETA: N/A)
 
 
 2. Alden Hinden
+    - Progress Update:
+
+    - Last Week's Goals:
+
+
+    - This Week's Goals
+
 
 3. Yusuf Farah
+    - Progress Update:
+
+    - Last Week's Goals:
+
+
+    - This Week's Goals
+
 
 4. Ben Ihrig
+    - Progress Update:
+
+    - Last Week's Goals:
+
+
+    - This Week's Goals
