@@ -39,7 +39,7 @@ Responsibility:
         - Begin basic PDF webscraping ✔️
 
     - This Week's Goals
-        - Full implementation of PDF webscraping using Express, Node.js and its libraries such as pdf-parse ✔️
+        - Full implementation of PDF webscraping using Express, Node.js and its libraries such as pdf-parse (ETA: 3 days)
 
 
 3. Yusuf Farah
