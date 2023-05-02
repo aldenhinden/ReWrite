@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/ui
 
     strategy:
       matrix:
@@ -23,7 +26,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
-      working-directory: ./src/ui
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
