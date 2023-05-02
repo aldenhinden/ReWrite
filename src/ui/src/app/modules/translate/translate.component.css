@@ -1,38 +1,27 @@
-
-
-.box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    position: fixed;
+.btn-warning, .translate {
+    position: relative;
+    padding: 11px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 5px;
+    color: #ffff;
+    background-color: green;
+    border: 0;
     overflow: hidden;
-    border: 3px dashed blue;
-    background: silver;
-    width: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
 }
 
-input {
-    display: none;
-    margin-left: auto;
-    margin-right: auto;
+.btn-warning input[type="File"] {
+    cursor: pointer;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: scale(5);
+    opacity: 0;
 }
 
-label {
-    display: block;
-    height: 100px;
-    width: 150px;
-    border-radius: 6px;
-    border: 1px dashed #999;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
+.btn-warning:hover, .translate:hover {
+    background-color: darkgreen;
 }
-
-label:hover {
-    color: #de0611;
-    border: 1px dashed #de0611;
-    align-items: center;
-    justify-content: center;
-}
-
