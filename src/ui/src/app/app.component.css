@@ -1,34 +1,50 @@
 * {
     box-sizing: border-box;
     background-color: #486673;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     min-width: 8vh;
+    width: 100%;
+    padding: 10px 0;
 }
 
-nav h4 {
+nav ul {
+    list-style: none;
+    width: 100%;
+    text-align: right;
+    padding-right: 60px;
+}
+
+nav img {
+    padding-left: 60px;
+}
+
+nav h4 a {
     color: white;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 30px;
+    text-decoration: none;
 }
 
-nav > div > ul li {
+nav ul li {
+    display: inline-block;
+    margin: 10px 20px;
     list-style: none;
 }
 
-nav > div > ul a {
-    color: white;
+nav ul li a {
+    color: #ffff;
     text-decoration: none;
-    letter-spacing: 3px;
+    letter-spacing: 5px;
     font-weight: bold;
     font-size: 14px;
     text-transform: uppercase;
 }
-
-
-
