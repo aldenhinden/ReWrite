@@ -21,13 +21,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js 18.xx
+    - name: Ubuntu Node.js Test
       uses: actions/setup-node@v3
       with:
         node-version: '18'
         cache: 'npm'
         cache-dependency-path: "./src/ui/package-lock.json"
     - run: npm install
+      with:
+        cache-dependency-path: "./src/ui/package.json"
     - run: npm run build
     - run: npm test
       env:
