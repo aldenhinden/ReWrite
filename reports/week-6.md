@@ -53,11 +53,10 @@ Responsibility: Alden, Yusuf
 
 
 4. Ben Ihrig
-    - Progress Update:
-        -
+    - Progress Update: Assembled test suite of academic papers to be summarized, gave them brief reads to see if I can get some understanding of if the GPT simplifications/summarizations is working properly. 
 
     - Last Week's Goals:
-        - 
+        - Assemble testing suite ✔️
 
     - This Week's Goals
-        - 
+        - Work with GPT integration code to get working code that pings GPT with a good prompt and returns the desired output. Help out with other sections of the project if neccessary.
