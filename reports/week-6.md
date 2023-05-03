@@ -33,7 +33,7 @@ Responsibility: Alden, Yusuf
 
 
 2. Alden Hinden
-    - Progress Update: Completed a working implementation of a simple PDF webscraping program that takes a hardcoded PDF, scrapes it for its text, and simply prints to console for now. Also added Mocha a Mocha testing suite to verify that this works as intended. Currently working on trying to get the Express.js server up and running so input can be captured from the font-end instead of having to hardcode the PDF files. Need to understand where and how to send the data to ChatGPT once it has been integrated with the front-end. 
+    - Progress Update: Completed a working implementation of a simple PDF webscraping program that takes a hardcoded PDF, scrapes it for its text, and simply prints to console for now. Also added a Mocha testing suite to verify that this works as intended. Currently working on trying to get the Express.js server up and running so input can be captured from the font-end instead of having to hardcode the PDF files. Need to understand where and how to send the data to ChatGPT once it has been integrated with the front-end. 
 
     - Last Week's Goals:
         - Get a working implementation of a simple PDF webscrape ✔️
