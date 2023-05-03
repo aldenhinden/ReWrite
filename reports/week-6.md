@@ -10,9 +10,9 @@ Long-Term Goal: Finish Translation webpage then improve the styling of it
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress: Basic webscraping working. 
+Progress: Basic webscraping working (Alden). Databasing??(Yusuf?)
 
-Long-Term Goal: Connect webscraping both to front-end server and 'back-end' GPT calls.
+Long-Term Goal: Connect webscraping both to front-end server and 'back-end' GPT calls (Alden). Databasing??(Yusuf?)
 
 Responsibility: Alden, Yusuf
 
