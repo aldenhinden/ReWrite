@@ -1,5 +1,13 @@
-<div class="document-btn">
+<!-- <div class="document-btn">
     <button type="button" class="btn-warning">Upload File<input type="file"></button>
     <button type="button" class="translate">Translate</button>
+</div> -->
+
+
+<div class="file-upload">
+    <input type="file" (change)='onChange($event)' class="upload-btn"/>
 </div>
 
+<div class="translate">
+    <button type="button">Translate</button>
+</div>

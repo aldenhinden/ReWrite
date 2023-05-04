@@ -1,4 +1,4 @@
-.btn-warning, .translate {
+/* .btn-warning, .translate {
     position: relative;
     padding: 11px 16px;
     font-size: 15px;
@@ -24,4 +24,52 @@
 
 .btn-warning:hover, .translate:hover {
     background-color: darkgreen;
+} */
+
+.translate {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.translate button {
+    padding: 20px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 50px;
+    color: #ffff;
+    background-color: #206a5d;
+    border: 0;
+    overflow: hidden;
+}
+
+.file-upload {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-btn {
+    font-size: 16px;
+    background: white;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px black;
+    width: 350px;
+    outline: none;
+}
+
+::-webkit-file-upload-button {
+    color: white;
+    background: #206a5d;
+    border: none;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 1px 0 1px 1px #6b4559;
+    outline: none;
+}
+
+::-webkit-file-upload-button:hover, .translate button:hover {
+    background: #438a5e;
 }
