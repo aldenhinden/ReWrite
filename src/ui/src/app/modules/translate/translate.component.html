@@ -3,11 +3,14 @@
     <button type="button" class="translate">Translate</button>
 </div> -->
 
+<div class="api-key">
+    <label for="api-key">API Key: <input type="text" maxlength="51" #key (input)="onKeyUpload(key.value)"></label>
+</div>
 
 <div class="file-upload">
-    <input type="file" (change)='onChange($event)' class="upload-btn"/>
+    <input type="file" (change)='onFileUpload($event)' class="upload-btn"/>
 </div>
 
 <div class="translate">
-    <button type="button">Translate</button>
+    <button type="button" (click)="onTranslate()">Translate</button>
 </div>

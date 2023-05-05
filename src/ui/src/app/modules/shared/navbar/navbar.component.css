@@ -1,6 +1,6 @@
 div, div * {
     box-sizing: border-box;
-    background-color: #486673;
+    background-color: #181B21;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -10,25 +10,24 @@ nav {
     align-items: center;
     min-width: 8vh;
     width: 100%;
-    padding: 10px 0;
+    padding: 20px 7%;
 }
 
 nav ul {
     list-style: none;
     width: 100%;
     text-align: right;
-    padding-right: 60px;
 }
 
 nav img {
     padding-left: 60px;
 }
 
-nav h4 a {
+nav a {
     color: white;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 30px;
+    letter-spacing: 7px;
+    font-size: 40px;
     text-decoration: none;
 }
 
@@ -43,6 +42,7 @@ nav ul li a {
     text-decoration: none;
     letter-spacing: 5px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-transform: uppercase;
+    margin-right: 20px;
 }

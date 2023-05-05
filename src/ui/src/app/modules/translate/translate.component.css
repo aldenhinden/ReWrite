@@ -25,6 +25,34 @@
 .btn-warning:hover, .translate:hover {
     background-color: darkgreen;
 } */
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.api-key {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.api-key label {
+    font-size: 14px;
+    font-weight: bold;
+    border-style: inset;
+    border-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.api-key label input {
+    padding: 3px;
+    border-radius: 50px;
+    color: black;
+    background-color: white;
+    width: 440px;
+}
 
 .translate {
     height: 100px;
