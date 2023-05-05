@@ -1,5 +1,8 @@
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
+const express = require("express");
+const fileUpload = require("express-fileupload");
+
 
 // construct absolute path to the PDF file <- FILE IS HARDCODED FOR NOW
 const path = require("path");
