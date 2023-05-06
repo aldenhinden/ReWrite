@@ -11,7 +11,8 @@ app.get('/pdf/:filename', function(req, res) {
 
     // read the file into memory from routing
     const file_buffer = fs.readFileSync(req.params.filename);
-    // test locally by adding           ^ 'samplePDFs/' + before req.params... since my sample is in a folder
+    // test locally by adding           ^ 'samplePDFs/'+  here before req.params... since my sample is in a folder
+    // then navigate to localhost:3000/pdf/chocolate_chip_cookies.pdf <- should print text from that pdf
 
     // parse the PDF and extract the text content
     pdfParse(file_buffer).then(function (pdf_data) {
