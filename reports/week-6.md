@@ -10,9 +10,9 @@ Long-Term Goal: Finish Translation webpage then improve the styling of it
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress: Basic webscraping working (Alden). Databasing??(Yusuf?)
+Progress: Basic webscraping working (Alden). Aquired understanding of how to inegrate ChatGPT with server, database schema coming along, rough draft not finished yet though.
 
-Long-Term Goal: Connect webscraping both to front-end server and 'back-end' GPT calls (Alden). Databasing??(Yusuf?)
+Long-Term Goal: Connect webscraping both to front-end server and 'back-end' GPT calls (Alden). Complete ChatGPT integration and complete rough draft of schema to review with team members.
 
 Responsibility: Alden, Yusuf
 
@@ -44,12 +44,16 @@ Responsibility: Alden, Yusuf
 
 
 3. Yusuf Farah
-    - Progress Update:
+    - Progress Update: Made good progress on ChatGPT integration research and will start coding this week. Database schema design taking a bit more time to get done, will try to have rough draft done by next week.
 
     - Last Week's Goals:
-
+        - Finish integration of ChatGPT API with Node.js server
+        - Create rough draft of database schema
 
     - This Week's Goals
+        - Finish integration of ChatGPT API with Node.js server
+        - Create rough draft of database schema
+
 
 
 4. Ben Ihrig
