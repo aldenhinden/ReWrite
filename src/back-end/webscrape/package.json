@@ -2,7 +2,7 @@
   "name": "rewrite",
   "version": "1.0.0",
   "description": "ReWrite is a project developed in CSE 403: Software Engineering at the University of Washington.",
-  "main": "index.js",
+  "main": "ScrapeFromWeb.js",
   "directories": {
     "test": "../../../test"
   },
