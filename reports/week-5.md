@@ -10,9 +10,9 @@ Long-Term Goal: Design and implement all webpages so that individuals can begin 
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress: Initial progress on webscraping PDFs. 
+Progress: Initial progress on webscraping PDFs, research started for ChatGPT integration and database schema. 
 
-Long-Term Goal: Complete full webscraping implementation and integrate with front-end so users may upload PDFs for scraping.
+Long-Term Goal: Complete full webscraping implementation and integrate with front-end so users may upload PDFs for scraping. Implement ChatGPT integration to allow for communication between ChatGPT and Node.js server.
 
 Responsibility: Alden, Yusuf
 
@@ -43,12 +43,15 @@ Responsibility: Alden, Yusuf
 
 
 3. Yusuf Farah
-    - Progress Update:
+    - Progress Update: Began research for ChatGPT integration with Java Spring, but transitioned to integration with Node.js as the project tech stack was changed. Also began review of database schema design and good practices when creating a database and storing data. 
 
     - Last Week's Goals:
+        - Research ChatGPT integration with Java (accomplished in Node.js instead) ✔️
+        - Review of MySQL and database schema design ✔️
 
-
-    - This Week's Goals
+    - This Week's Goals:
+        - Finish integration of ChatGPT API with Node.js server
+        - Create rough draft of database schema
 
 
 4. Ben Ihrig

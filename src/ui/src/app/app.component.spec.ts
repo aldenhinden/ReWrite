@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './modules/home/home.component';
 import { TranslateComponent } from './modules/translate/translate.component';
+import { NavbarComponent } from './modules/shared/navbar/navbar.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HomeComponent,
-        TranslateComponent
+        TranslateComponent,
+        NavbarComponent
       ],
     }).compileComponents();
   });
