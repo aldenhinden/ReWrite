@@ -12,10 +12,10 @@ app.use(cors());
 // define the routing
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
     console.log(req);
-    fs.writeFileSync('samplePDFs/test.pdf', req.files.file.data);
+    fs.writeFileSync('samplePDFs/'+req.files.file.name, req.files.file.data);
 
     // read the file into memory from routing
-    const file_buffer = fs.readFileSync('samplePDFs/test.pdf');
+    const file_buffer = fs.readFileSync('samplePDFs/'+req.files.file.name);
     // test locally by adding           ^ 'samplePDFs/'+  here before req.params... since my sample is in a folder
     // then navigate to localhost:3000/pdf/chocolate_chip_cookies.pdf <- should print text from that pdf
 
