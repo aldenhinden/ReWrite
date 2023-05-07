@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-translate',
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 export class TranslateComponent {
 
   ngOnInit(): void{
+  }
+
+  constructor(private http:HttpClient) {
   }
 
   EMPTY_FORM = new FormData();
@@ -31,7 +35,10 @@ export class TranslateComponent {
   }
 
   onTranslate() {
-    console.log(this.api_key)
-    console.log(this.curr_file)
+    console.log("API KEY: " + this.api_key);
+    console.log(this.curr_file);
+    this.http.post('http://localhost:3500/upload', this.curr_file).subscribe(response => {
+      console.log(response);
+    });
   }
 }
