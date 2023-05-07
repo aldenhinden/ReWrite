@@ -37,7 +37,7 @@ export class TranslateComponent {
   onTranslate() {
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
-    this.http.post('http://localhost:3500/upload', this.curr_file).subscribe(response => {
+    this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
     });
   }
