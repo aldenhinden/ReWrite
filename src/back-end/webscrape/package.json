@@ -2,7 +2,7 @@
   "name": "rewrite",
   "version": "1.0.0",
   "description": "ReWrite is a project developed in CSE 403: Software Engineering at the University of Washington.",
-  "main": "index.js",
+  "main": "ScrapeFromWeb.js",
   "directories": {
     "test": "../../../test"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/aldenhinden/ReWrite#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "pdf-parse": "^1.1.1"
