@@ -16,13 +16,18 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-const API_KEY = "";
+let API_KEY = "";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
     if (req.files == null) {
         API_KEY = "";
         return res.json({ status: "error", text: "" });
+    }
+
+    // check if uploaded file is a pdf
+    if (req.files.doc.mimetype !== 'application/pdf') {
+        return res.json({ status: "error", text: "Uploaded file is not a PDF." });
     }
 
     // saves uploaded file into memory into docs
@@ -36,7 +41,7 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
     pdfParse(file_buffer).then(function (pdf_data) {
         // sends success message and txt to client if successful, else error
         if (pdf_data != null) {
-            this.API_KEY = req.body.key;
+            API_KEY = req.body.key;
             res.json({ status: "uploaded", text: pdf_data.text });
             runCompletion(pdf_data.text);
             return;
@@ -57,7 +62,7 @@ app.listen(3000, function() {
 async function runCompletion (pdf_txt) {
     const configuration = new Configuration({
         // Use given API key
-        apiKey: this.API_KEY,
+        apiKey: API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 
