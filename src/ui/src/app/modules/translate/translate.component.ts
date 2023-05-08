@@ -26,8 +26,7 @@ export class TranslateComponent {
     if (event.target.files.length > 0 && event.target.files[0].type == "application/pdf") {
       const file = event.target.files[0];
       const formData = new FormData();
-      formData.append('file', file);
-        
+      formData.append('doc', file);
       this.curr_file = formData;
     } else {
       this.curr_file = this.EMPTY_FORM;
@@ -37,6 +36,7 @@ export class TranslateComponent {
   onTranslate() {
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
+    this.curr_file.set('key', this.api_key);
     this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
     });
