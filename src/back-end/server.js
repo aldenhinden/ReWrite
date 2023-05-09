@@ -8,6 +8,10 @@ const fileUpload = require("express-fileupload");
 const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config()
 
+//Text to PDF
+const PdfPrinter = require("printer");
+const stream = require("blob-stream");
+
 
 // Back-end Server Start up
 
@@ -43,7 +47,7 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
         if (pdf_data != null) {
             API_KEY = req.body.key;
             runCompletion(pdf_data.text).then((result) => { res.json({ status: "uploaded", text: result }) });
-            
+
             return;
         } else {
             this.API_KEY = "";
