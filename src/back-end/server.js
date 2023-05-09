@@ -16,7 +16,7 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-let API_KEY = "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";
+let API_KEY = "";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
@@ -75,6 +75,7 @@ async function runCompletion (pdf_txt) {
     return output
 };
 
+async function get_simplified_pdf()
 
 //PROMPTING: input complicated text, output simplified text
 async function simplify(input_text) {
