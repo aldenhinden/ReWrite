@@ -4,6 +4,10 @@ const pdfParse = require("pdf-parse");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 
+//PDF construction imports
+const PdfPrinter = require('printer');
+const blobStream = require('blob-stream');
+
 // OpenAI Imports
 const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config()
@@ -16,7 +20,7 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-let API_KEY = "";
+let API_KEY = "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";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
@@ -75,7 +79,28 @@ async function runCompletion (pdf_txt) {
     return output
 };
 
-async function get_simplified_pdf()
+function export_as_pdf(text, callback) {
+    let fonts = {
+    	Roboto: {
+    		normal: 'fonts/Roboto-Regular.ttf',
+    		bold: 'fonts/Roboto-Regular.ttf',
+    		italics: 'fonts/Roboto-Regular.ttf',
+    		bolditalics: 'fonts/Roboto-Regular.ttf'
+    	}
+    };
+
+    let printer = new PdfPrinter(fonts)
+    var docDefinition = {content: [text]}
+
+    var pdfDoc = printer.createPdfKitDocument(docDefinition)
+    const stream = pdfDoc.pipe(blobStream())
+    pdfDoc.pipe(fs.createWriteStream('pdfs/basics.pdf'))
+    pdfDoc.end()
+    stream.on('finish', function() {
+        const blob = stream.toBlob()
+        callback(blob)
+    });
+}
 
 //PROMPTING: input complicated text, output simplified text
 async function simplify(input_text) {
@@ -103,7 +128,7 @@ async function simplify(input_text) {
         let [new_memory, new_simplified] = extract_parts(gpt_output)
         memory = truncate_extra_words(new_memory, memory_size)
         simplified += " " + new_simplified
-        console.log(new_simplified + "\n\n")
+        //console.log(new_simplified + "\n\n")
     }
 
     return simplified
@@ -146,3 +171,8 @@ function extract_parts(gpt_output) {
     let output = gpt_output.substring(out_idx + 8)
     return [memory, output]
 }
+
+async function test() {
+    console.log("Is a lion stronger than a cat?".substring(0, 500))
+}
+test()
