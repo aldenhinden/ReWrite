@@ -16,7 +16,7 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-let API_KEY = "";
+let API_KEY = "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";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
