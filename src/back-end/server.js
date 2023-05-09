@@ -32,18 +32,18 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
 
     // saves uploaded file into memory into docs
     console.log(req.files.doc);
-    fs.writeFileSync('docs/'+req.files.doc.name, req.files.doc.data);
+    fs.writeFileSync('docs/uploaded/'+req.files.doc.name, req.files.doc.data);
 
     // read the file into memory from routing
-    const file_buffer = fs.readFileSync('docs/'+req.files.doc.name);
+    const file_buffer = fs.readFileSync('docs/uploaded/'+req.files.doc.name);
 
     // parse the PDF and extract the text content
     pdfParse(file_buffer).then(function (pdf_data) {
         // sends success message and txt to client if successful, else error
         if (pdf_data != null) {
             API_KEY = req.body.key;
-            res.json({ status: "uploaded", text: pdf_data.text });
-            runCompletion(pdf_data.text);
+            runCompletion(pdf_data.text).then((result) => { res.json({ status: "uploaded", text: result }) });
+            
             return;
         } else {
             this.API_KEY = "";
@@ -72,10 +72,10 @@ async function runCompletion (pdf_txt) {
       max_tokens: 2049,
     });
     let output = completion.data.choices[0].text;
-    return output
-};
 
-async function get_simplified_pdf()
+    let simplified_txt = await simplify(output);
+    return simplified_txt;
+};
 
 //PROMPTING: input complicated text, output simplified text
 async function simplify(input_text) {
@@ -92,11 +92,12 @@ async function simplify(input_text) {
     let simplified = ""
     while (input_text !== "") {
         //get next chunk of text, remove it from input_text
-        let current_text = input_text.substring(0, input_size)
-        input_text = input_text.substring(Math.min(input_text.length, input_size))
+        let current_text = input_text.toString().substring(0, input_size)
+        input_text = input_text.toString().substring(Math.min(input_text.length, input_size))
 
         //prepend the prompt and memory to the text chunk and send to gpt
         let full_prompt = dress_input(current_text, memory, max_output_size, memory_size)
+        console.log("RUNNING API CALL");
         let gpt_output = await runCompletion(full_prompt)
 
         //parse output to update running simplified output and updated memory
