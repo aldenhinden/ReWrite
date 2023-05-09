@@ -77,6 +77,33 @@ async function runCompletion (pdf_txt) {
     return simplified_txt;
 };
 
+//TEXT TO PDF:
+function export_as_pdf(text, callback) {
+    let fonts = {
+    	Roboto: {
+    		normal: 'fonts/Roboto-Regular.ttf',
+    		bold: 'fonts/Roboto-Regular.ttf',
+    		italics: 'fonts/Roboto-Regular.ttf',
+    		bolditalics: 'fonts/Roboto-Regular.ttf'
+    	}
+    };
+
+    let printer = new PdfPrinter(fonts)
+    var docDefinition = {content: [text]}
+
+    var pdfDoc = printer.createPdfKitDocument(docDefinition)
+    const stream = pdfDoc.pipe(blobStream())
+    pdfDoc.pipe(fs.createWriteStream('pdfs/basics.pdf'))
+    pdfDoc.end()
+
+    //what the fuck is this VV
+    stream.on('finish', function() {
+        const blob = stream.toBlob()
+        callback(blob)
+    });
+};
+
+
 //PROMPTING: input complicated text, output simplified text
 async function simplify(input_text) {
     let context_length = 2000
