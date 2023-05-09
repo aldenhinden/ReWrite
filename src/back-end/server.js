@@ -16,7 +16,7 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-let API_KEY = "";
+let API_KEY = "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";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
@@ -71,5 +71,77 @@ async function runCompletion (pdf_txt) {
       prompt: pdf_txt,
       max_tokens: 2049,
     });
-    console.log(completion.data.choices[0].text);
+    let output = completion.data.choices[0].text;
+    return output
 };
+
+
+//PROMPTING: input complicated text, output simplified text
+async function simplify(input_text) {
+    let context_length = 2000
+    let text_compression = 1 // value of 0.5 means 500 words input -> 250 words output
+    let memory_size = Math.floor(context_length / 10) // size of each mem block (old and new)
+
+    let prompt_size = 100 // count words in prompt, 100 is just placeholder
+    let input_size = Math.floor((context_length - memory_size * 2) * (1 / (1 + text_compression)))
+    let max_output_size = context_length - (memory_size * 2 + prompt_size + input_size)
+
+    //Break input_text into chunks of size input_size, loop over them to call gpt on each
+    let memory = ""
+    let simplified = ""
+    while (input_text !== "") {
+        //get next chunk of text, remove it from input_text
+        let current_text = input_text.substring(0, input_size)
+        input_text = input_text.substring(Math.min(input_text.length, input_size))
+
+        //prepend the prompt and memory to the text chunk and send to gpt
+        let full_prompt = dress_input(current_text, memory, max_output_size, memory_size)
+        let gpt_output = await runCompletion(full_prompt)
+
+        //parse output to update running simplified output and updated memory
+        let [new_memory, new_simplified] = extract_parts(gpt_output)
+        memory = truncate_extra_words(new_memory, memory_size)
+        simplified += " " + new_simplified
+        console.log(new_simplified + "\n\n")
+    }
+
+    return simplified
+}
+
+function dress_input(input, memory, max_output_size, memory_size) {
+    let full_prompt = "" +
+    "Following this are two portions of text, Input and Memory_Old. Input is a portion of text that needs to be " +
+    "simplified, while Memory_Old is a storage for information from prior text that may be needed." +
+    " First, write a section starting with \"Memory_New:\", where information from Input that may be relevant " +
+    "to future text will be merged with Memory_Old to create a  summary of the work so far." +
+    "Do not use more than " + memory_size.toString() + " words for this summary." +
+    "Next, write a section starting with \"Output:\" that is a simplification and summarization of the input " +
+    "text so that it can be understood easily by a layman, keeping use of jargon to a minimum." +
+    "This simplification must not exceed " + max_output_size.toString() + "words.\n\n"
+
+    full_prompt += ("Memory_Old:\n" + memory + "\n\n" + "Input:\n" + input)
+    return full_prompt
+}
+
+function truncate_extra_words(str, max_words) {
+    let words = str.split(" ")
+    let i = 0
+    let result = ""
+    while (i < max_words && i < words.length) {
+        result += words[i] + " "
+        i += 1
+    }
+    return result
+}
+
+function extract_parts(gpt_output) {
+    let mem_idx = gpt_output.search("Memory_New:")
+    let out_idx = gpt_output.search("Output:")
+    if (mem_idx == -1 || out_idx == -1) {
+        return ["", ""] // if GPT didn't format the output properly.
+    }
+
+    let memory = gpt_output.substring(mem_idx + 12, out_idx)
+    let output = gpt_output.substring(out_idx + 8)
+    return [memory, output]
+}
