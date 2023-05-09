@@ -4,10 +4,6 @@ const pdfParse = require("pdf-parse");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 
-//PDF construction imports
-const PdfPrinter = require('printer');
-const blobStream = require('blob-stream');
-
 // OpenAI Imports
 const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config()
@@ -20,7 +16,7 @@ const app = express();
 var cors = require('cors');
 app.use(cors());
 
-let API_KEY = "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";
+let API_KEY = "";
 
 // WEB-SCRAPE: define the routing to perform scrape on input file
 app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
@@ -36,18 +32,18 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
 
     // saves uploaded file into memory into docs
     console.log(req.files.doc);
-    fs.writeFileSync('docs/'+req.files.doc.name, req.files.doc.data);
+    fs.writeFileSync('docs/uploaded/'+req.files.doc.name, req.files.doc.data);
 
     // read the file into memory from routing
-    const file_buffer = fs.readFileSync('docs/'+req.files.doc.name);
+    const file_buffer = fs.readFileSync('docs/uploaded/'+req.files.doc.name);
 
     // parse the PDF and extract the text content
     pdfParse(file_buffer).then(function (pdf_data) {
         // sends success message and txt to client if successful, else error
         if (pdf_data != null) {
             API_KEY = req.body.key;
-            res.json({ status: "uploaded", text: pdf_data.text });
-            runCompletion(pdf_data.text);
+            runCompletion(pdf_data.text).then((result) => { res.json({ status: "uploaded", text: result }) });
+            
             return;
         } else {
             this.API_KEY = "";
@@ -76,31 +72,10 @@ async function runCompletion (pdf_txt) {
       max_tokens: 2049,
     });
     let output = completion.data.choices[0].text;
-    return output
+
+    let simplified_txt = await simplify(output);
+    return simplified_txt;
 };
-
-function export_as_pdf(text, callback) {
-    let fonts = {
-    	Roboto: {
-    		normal: 'fonts/Roboto-Regular.ttf',
-    		bold: 'fonts/Roboto-Regular.ttf',
-    		italics: 'fonts/Roboto-Regular.ttf',
-    		bolditalics: 'fonts/Roboto-Regular.ttf'
-    	}
-    };
-
-    let printer = new PdfPrinter(fonts)
-    var docDefinition = {content: [text]}
-
-    var pdfDoc = printer.createPdfKitDocument(docDefinition)
-    const stream = pdfDoc.pipe(blobStream())
-    pdfDoc.pipe(fs.createWriteStream('pdfs/basics.pdf'))
-    pdfDoc.end()
-    stream.on('finish', function() {
-        const blob = stream.toBlob()
-        callback(blob)
-    });
-}
 
 //PROMPTING: input complicated text, output simplified text
 async function simplify(input_text) {
@@ -117,18 +92,19 @@ async function simplify(input_text) {
     let simplified = ""
     while (input_text !== "") {
         //get next chunk of text, remove it from input_text
-        let current_text = input_text.substring(0, input_size)
-        input_text = input_text.substring(Math.min(input_text.length, input_size))
+        let current_text = input_text.toString().substring(0, input_size)
+        input_text = input_text.toString().substring(Math.min(input_text.length, input_size))
 
         //prepend the prompt and memory to the text chunk and send to gpt
         let full_prompt = dress_input(current_text, memory, max_output_size, memory_size)
+        console.log("RUNNING API CALL");
         let gpt_output = await runCompletion(full_prompt)
 
         //parse output to update running simplified output and updated memory
         let [new_memory, new_simplified] = extract_parts(gpt_output)
         memory = truncate_extra_words(new_memory, memory_size)
         simplified += " " + new_simplified
-        //console.log(new_simplified + "\n\n")
+        console.log(new_simplified + "\n\n")
     }
 
     return simplified
@@ -171,8 +147,3 @@ function extract_parts(gpt_output) {
     let output = gpt_output.substring(out_idx + 8)
     return [memory, output]
 }
-
-async function test() {
-    console.log("Is a lion stronger than a cat?".substring(0, 500))
-}
-test()
