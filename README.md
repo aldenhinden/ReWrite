@@ -10,7 +10,7 @@ To build the project, one needs to go in both the front and back end directories
 1. Download the latest version of npm
 2. Visit the directories of the front and back end and run "npm install" which will build the necessary dependencies
 - Front-End: go to /src/ui/ then perform "npm install" (Angular should be version 15.2.0 or 15.2.6)
-- Back-End: go to /src/backend/ then perform "node server.js"
+- Back-End: go to /src/backend/ then perform "npm install"
 3. Open up two terminals, one for each server (front and back end)
 - One terminal will handle the front-end, go to /src/ui/ then run "ng serve --open"
 - Other terminai will handle the back-end, go to /src/backend/ then run "node server.js"
