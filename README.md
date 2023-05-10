@@ -4,6 +4,12 @@ ReWrite is a project developed in CSE 403: Software Engineering at the Universit
 ## Overview
 The goal of this website is to make things like complex scientific research papers more easily understandable for the average person. We provide an intuitive UI, giving the user the ability to input a URL to a research paper, for example. We then use the ChatGPT API alongside some prompt engineering in order to procure an organized summary of the input paper. 
 
+# Progress:
+Currently, the usecases that are option are:
+- User can upload PDF file
+- Back end will scrape PDF document
+- Website will display the simplified text of the uploaded PDF document that is produced by OpenAI
+
 # Setup
 To build the project, one needs to go in both the front and back end directories and build each project then start both servers up
 
