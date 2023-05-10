@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DownloadService } from './download.service';
 
 describe('DownloadService', () => {
   let service: DownloadService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async  () => {
+    await TestBed.configureTestingModule({
+      imports: [ HttpClientModule ]
+    })
+    .compileComponents();;
     service = TestBed.inject(DownloadService);
   });
 
