@@ -33,11 +33,14 @@ Responsibility:
 
 
 2. Alden Hinden
-    - Progress Update: 
+    - Progress Update: Complete working version of a server that takes a hardcoded PDF file and scrapes it for text. Also added error some error checking once we had functionality with PDF uploading on the front end. 
 
     - Last Week's Goals:
+        - Create an Express.js server and link to webscraper to allow users to upload the PDF instead of working with a hardcoded copy ✔️
 
-    - This Week's Goals
+    - This Week's Goals: 
+        - Potentially expand into more general webscraping. 
+        - Assist with any other project expansion. 
 
 3. Yusuf Farah
     - Progress Update: 
