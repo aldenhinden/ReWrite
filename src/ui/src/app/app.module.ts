@@ -19,7 +19,6 @@ import { DownloadService } from './modules/service/download.service';
     TranslateComponent,
     NavbarComponent,
     LoginComponent,
-    DownloadService
   ],
   imports: [
     BrowserModule,
