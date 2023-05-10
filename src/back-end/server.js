@@ -3,6 +3,9 @@ const fs = require("fs");
 const pdfParse = require("pdf-parse");
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const PDFDocument = require('pdfkit');
+const doc = new PDFDocument;
+
 
 // OpenAI Imports
 const { Configuration, OpenAIApi } = require("openai");
@@ -32,18 +35,20 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
 
     // saves uploaded file into memory into docs
     console.log(req.files.doc);
-    fs.writeFileSync('docs/uploaded/'+req.files.doc.name, req.files.doc.data);
+    fs.writeFileSync('./docs/uploaded/'+req.files.doc.name, req.files.doc.data);
 
     // read the file into memory from routing
-    const file_buffer = fs.readFileSync('docs/uploaded/'+req.files.doc.name);
+    // const file_buffer = fs.readFileSync('docs/uploaded/'+req.files.doc.name);
 
     // parse the PDF and extract the text content
-    pdfParse(file_buffer).then(function (pdf_data) {
+    pdfParse(req.files.doc.data).then(function (pdf_data) {
         // sends success message and txt to client if successful, else error
         if (pdf_data != null) {
             API_KEY = req.body.key;
-            simplify(pdf_data.text).then((result) => { res.json({ status: "uploaded", text: result }) });
-
+            console.log(pdf_data);
+            simplify(req.files.doc.name, pdf_data.text).then((result) => {
+                return res.json({ status: "uploaded", text: result });
+            });
             return;
         } else {
             this.API_KEY = "";
@@ -51,6 +56,11 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
         }
     });
 });
+
+app.get('/simplified/', function(req, res) {
+    console.log("FILENAME BACKEND: " + req.query.filename);
+    return res.download("./docs/simplified/simplified_"+req.query.filename);
+})
 
 // SERVER: start the back end server
 app.listen(3000, function() {
@@ -77,34 +87,16 @@ async function runCompletion (pdf_txt) {
 };
 
 //TEXT TO PDF:
-function export_as_pdf(text, callback) {
-    let fonts = {
-    	Roboto: {
-    		normal: 'fonts/Roboto-Regular.ttf',
-    		bold: 'fonts/Roboto-Regular.ttf',
-    		italics: 'fonts/Roboto-Regular.ttf',
-    		bolditalics: 'fonts/Roboto-Regular.ttf'
-    	}
-    };
-
-    let printer = new PdfPrinter(fonts)
-    var docDefinition = {content: [text]}
-
-    var pdfDoc = printer.createPdfKitDocument(docDefinition)
-    const stream = pdfDoc.pipe(blobStream())
-    pdfDoc.pipe(fs.createWriteStream('pdfs/basics.pdf'))
-    pdfDoc.end()
-
-    //what the fuck is this VV
-    stream.on('finish', function() {
-        const blob = stream.toBlob()
-        callback(blob)
-    });
+function export_as_pdf(doc_name, simplified_txt) {
+    console.log("NAME : " + doc_name);
+    console.log("SIMPLE TXT: " +simplified_txt)
+    b = Buffer.from(simplified_txt, 'utf8');
+    fs.writeFileSync('./docs/simplified/simplified_'+doc_name, b);
 };
 
 
 //PROMPTING: input complicated text, output simplified text
-async function simplify(input_text) {
+async function simplify(doc_name, input_text) {
     let context_length = 2000
     let text_compression = 1 // value of 0.5 means 500 words input -> 250 words output
     let memory_size = Math.floor(context_length / 10) // size of each mem block (old and new)
@@ -132,6 +124,8 @@ async function simplify(input_text) {
         simplified += " " + new_simplified
         console.log(new_simplified + "\n\n")
     }
+
+    export_as_pdf(doc_name, simplified);
 
     return simplified
 }
