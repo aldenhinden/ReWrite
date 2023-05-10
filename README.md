@@ -13,8 +13,9 @@ To build the project, one needs to go in both the front and back end directories
 - Back-End: go to /src/backend/ then perform "npm install"
 3. Open up two terminals, one for each server (front and back end)
 - One terminal will handle the front-end, go to /src/ui/ then run "ng serve --open"
-- Other terminai will handle the back-end, go to /src/backend/ then run "node server.js"
+- Other terminai will handle the back-end, go to /src/back-end/ then run "node server.js"
 4. The website should appear as localhost:4200/ where functionality is now enabled
+5. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
 ## Repo Layout
 Inside of our src file you will find the directories for each of the projects major components. 
