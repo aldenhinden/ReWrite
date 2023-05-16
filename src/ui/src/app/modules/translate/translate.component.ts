@@ -32,7 +32,13 @@ export class TranslateComponent {
   }
 
   onFileUpload(event: any) {
-    if (event.target.files.length > 0 && event.target.files[0].type == "application/pdf") {
+    if (event.target.files.length > 0) {
+      const upload = event.target.files[0];
+      if (upload.type !== 'application/pdf') {
+        // error check for PDF type upload
+        alert("Please upload a PDF file.");
+        return;
+      }
       const file = event.target.files[0];
       this.file_name = file.name;
       const formData = new FormData();
@@ -44,6 +50,11 @@ export class TranslateComponent {
   }
 
   onTranslate() {
+    if (!this.api_key) {
+      // error check user input API key
+      alert("Please provide an API key before translating.");
+      return;
+    }
     this.translation = "Waiting for translation...";
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
@@ -52,7 +63,7 @@ export class TranslateComponent {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
       let simplified = res.text;
-      
+
       this.translation = simplified;
 
       // this.downloadService.downloadFile(this.file_name).subscribe( res => {
