@@ -24,9 +24,9 @@ To build the project, one needs to go in both the front and back end directories
 For developers that wish to contribute or obtain the code:
 
 1. Fork the ReWrite project
-2. Create an independent feature branch ('git branch :branch-name:')
-3. Commit feature changes with commit message ('git commit -m :summary of commit:')
-4. Push changes on to the independent feature branch ('git push origin :branch-name:')
+2. Create an independent feature branch (`git branch 'branch-name'`)
+3. Commit feature changes with commit message (`git commit -m 'summary of commit'`)
+4. Push changes on to the independent feature branch (`git push origin 'branch-name'`)
 5. Create a pull request that will be reviewed and eventually merged to main branch
 
 ## Repo Layout
