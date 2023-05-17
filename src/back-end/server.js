@@ -47,7 +47,11 @@ app.post('/upload/', fileUpload( {createParentPath: true}), (req, res) => {
             API_KEY = req.body.key;
             console.log(pdf_data);
             simplify(req.files.doc.name, pdf_data.text).then((result) => {
+              if (result.startsWith("##ERROR##:")) {
+                return res.json({ status: "error", text: result });
+              } else {
                 return res.json({ status: "uploaded", text: result });
+              }
             });
             return;
         } else {
@@ -73,9 +77,10 @@ if (!process.env.TEST_ENV) {
 
 // OPENAI INTEGRATION: performs api call to OpenAI using pdf_txt
 async function runCompletion (pdf_txt) {
+  try {
     const configuration = new Configuration({
-        // Use given API key
-        apiKey: API_KEY,
+      // Use given API key
+      apiKey: API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 
@@ -84,9 +89,14 @@ async function runCompletion (pdf_txt) {
       prompt: pdf_txt,
       max_tokens: 2049,
     });
+
     let output = completion.data.choices[0].text;
 
     return output;
+  } catch (error) {
+    // Handle the error
+    return "##ERROR##: " + error;
+  }
 };
 
 //TEXT TO PDF:
@@ -124,6 +134,7 @@ async function simplify_testable(doc_name, input_text, gpt_function) {
         let full_prompt = dress_input(current_text, memory, max_output_size, memory_size)
         console.log("RUNNING API CALL");
         let gpt_output = await gpt_function(full_prompt)
+        if (gpt_output.startsWith("##ERROR##:")) return gpt_output;
 
         //parse output to update running simplified output and updated memory
         let [new_memory, new_simplified] = extract_parts(gpt_output)
