@@ -31,4 +31,5 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
+    - run: export TEST_ENV=true
     - run: npx mocha backend.test.js

@@ -63,9 +63,12 @@ app.get('/simplified/', function(req, res) {
 })
 
 // SERVER: start the back end server
-app.listen(3000, function() {
-    console.log('Server is listening on port 3000');
-});
+// if this is being run in a testing environment, skip
+if (!process.env.TEST_ENV) {
+    app.listen(3000, function() {
+        console.log('Server is listening on port 3000');
+    });
+}
 
 
 // OPENAI INTEGRATION: performs api call to OpenAI using pdf_txt
