@@ -9,6 +9,33 @@ describe('server', () => {
     });
 });
 
+//act like gpt for formatting, but instead of simplifying just call toUpperCase
+function gpt_simulator(prompt) {
+    let input_idx = prompt.search("Input:")
+    let input_string = prompt.substring(input_idx + 7)
+    let out_str = "Memory_New: oldmem12345 Output: " + input_string.toUpperCase()
+    return out_str
+}
+
+async function simplify_test_1 () {
+   let input_str = "simplify this please"
+   let result = await server.simplify_testable("test_doc_out.pdf", input_str, gpt_simulator)
+   expect(result).to.equal(" " + input_str.toUpperCase())
+}
+
+async function simplify_test_2 () {
+    let input_str_1 = "simplify this please"
+    let imput_str_2 = ""
+    let i = 0
+    while (i < 1000) {
+        i += 1
+        input_str_2 += input_str_1
+    }
+
+    let result = await server.simplify_testable("test_doc_out.pdf", input_str_2, gpt_simulator)
+    expect(result).to.equal(" " + input_str.toUpperCase())
+}
+
 describe('prompting', () => {
     describe('extract_parts()', () => {
         it('extract_parts() should should properly separate memory and output', () => {
@@ -36,7 +63,11 @@ describe('prompting', () => {
             const result = server.truncate_extra_words(test_string, 5)
             expect(result).to.equal("hello test word word word")
         })
-    })
+    }),
 
+    describe('simplify()', () => {
+        it('simplify() should work on strings smaller than a chunk', simplify_test_1 ),
+        it('simplify() should work on strings larger than a chunk', simplify_test_1 )
+    })
 });
 
