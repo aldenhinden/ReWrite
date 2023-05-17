@@ -10,11 +10,11 @@ Long-Term Goal: Hoping to improve the translation page by including more feature
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress: 
+Progress: Implemented functional full stack from input to simplified output.
 
-Long-Term Goal: 
+Long-Term Goal: Optimize the prompting setup, develop new ways of storing/sending the user's request to them, develop comprehensive testing suite
 
-Responsibility: 
+Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
 
 ## Contributions
 1. John Li
@@ -33,11 +33,14 @@ Responsibility:
 
 
 2. Alden Hinden
-    - Progress Update: 
+    - Progress Update: Complete working version of a server that takes a hardcoded PDF file and scrapes it for text. Also added error some error checking once we had functionality with PDF uploading on the front end. 
 
     - Last Week's Goals:
+        - Create an Express.js server and link to webscraper to allow users to upload the PDF instead of working with a hardcoded copy ✔️
 
-    - This Week's Goals
+    - This Week's Goals: 
+        - Potentially expand into more general webscraping. 
+        - Assist with any other project expansion. 
 
 3. Yusuf Farah
     - Progress Update: 
@@ -49,8 +52,13 @@ Responsibility:
 
 
 4. Ben Ihrig
-    - Progress Update: 
+    - Progress Update: Designed + implemented a prompting setup for breaking down long texts into portions, with the ability to remember information from previous sections while analysing current ones.
 
-    - Last Week's Goals:
+    - Last Week's Goals: 
+        - Implement prompting setup ✔️
+        - Implement testing for prompt architecture X
 
     - This Week's Goals
+        - Finish implementing testing for prompt architecture
+        - Look into tweaking the prompting setup to achieve better speed / informational accuracy
+        - Help out with other tasks where needed 
