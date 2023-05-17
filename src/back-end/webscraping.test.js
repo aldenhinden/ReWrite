@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { scrapePdf } = require('../../../src/back-end/webscrape/scrape.js');
+const { scrapePdf } = require('./server.js');
 
 describe('scrapePdf', () => {
     it('should return the text content of a PDF file', () => {
