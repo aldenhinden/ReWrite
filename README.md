@@ -20,6 +20,15 @@ To build the project, one needs to go in both the front and back end directories
 4. The website should appear as localhost:4200/ where functionality is now enabled
 5. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
+## Contribution
+For developers that wish to contribute or obtain the code:
+
+1. Fork the ReWrite project
+2. Create an independent feature branch ('git branch :branch-name:')
+3. Commit feature changes with commit message ('git commit -m :summary of commit:')
+4. Push changes on to the independent feature branch ('git push origin :branch-name:')
+5. Create a pull request that will be reviewed and eventually merged to main branch
+
 ## Repo Layout
 Inside of our src file you will find the directories for each of the projects major components. 
 
