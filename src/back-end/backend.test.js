@@ -1,7 +1,7 @@
 const { expect } = require('chai');
-const { scrapePdf } = require('./server.js');
+const { server } = require('./server.js');
 
-describe('scrapePdf', () => {
+describe('server', () => {
     it('should return correct text from a simple hardcoded sample PDF', () => {
         // Your test code goes here
         const path = require("path");
