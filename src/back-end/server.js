@@ -97,9 +97,13 @@ function export_as_pdf(doc_name, simplified_txt) {
     fs.writeFileSync('./docs/simplified/simplified_'+doc_name, b);
 };
 
+async function simplify(doc_name, input_text) {
+    return simplify_testable(doc_name, input_text, runCompletion)
+}
+
 
 //PROMPTING: input complicated text, output simplified text
-async function simplify(doc_name, input_text) {
+async function simplify_testable(doc_name, input_text, gpt_function) {
     let context_length = 2000
     let text_compression = 1 // value of 0.5 means 500 words input -> 250 words output
     let memory_size = Math.floor(context_length / 10) // size of each mem block (old and new)
@@ -119,7 +123,7 @@ async function simplify(doc_name, input_text) {
         //prepend the prompt and memory to the text chunk and send to gpt
         let full_prompt = dress_input(current_text, memory, max_output_size, memory_size)
         console.log("RUNNING API CALL");
-        let gpt_output = await runCompletion(full_prompt)
+        let gpt_output = await gpt_function(full_prompt)
 
         //parse output to update running simplified output and updated memory
         let [new_memory, new_simplified] = extract_parts(gpt_output)
@@ -156,17 +160,19 @@ function truncate_extra_words(str, max_words) {
         result += words[i] + " "
         i += 1
     }
-    return result
+    return result.substring(0, result.length - 1)
 }
 
 function extract_parts(gpt_output) {
     let mem_idx = gpt_output.search("Memory_New:")
     let out_idx = gpt_output.search("Output:")
     if (mem_idx == -1 || out_idx == -1) {
-        return ["", ""] // if GPT didn't format the output properly.
+        return ["", "GPT_OUT_ERROR"] // if GPT didn't format the output properly.
     }
 
     let memory = gpt_output.substring(mem_idx + 12, out_idx)
     let output = gpt_output.substring(out_idx + 8)
     return [memory, output]
 }
+
+module.exports = {truncate_extra_words, extract_parts, simplify_testable}
