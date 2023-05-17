@@ -1,8 +1,5 @@
 # ReWrite
-ReWrite is a project developed in CSE 403: Software Engineering at the University of Washington. 
-
-## Overview
-The goal of this website is to make things like complex scientific research papers more easily understandable for the average person. We provide an intuitive UI, giving the user the ability to input a URL to a research paper, for example. We then use the ChatGPT API alongside some prompt engineering in order to procure an organized summary of the input paper. 
+ReWrite is a website aimed at simplifying and summarizing text contents from a PDF document. The tool can be applied on complex scientific research papers, unorthodox formatted documents, or just about any PDF documents to genereate a simplified summary of the inputted file's text. On the website, we provide a simplified layout, giving the user the ability to easily navigate while trying the tool. The tools utilized are OpenAI's API alongside prompt engineering in roder to effectively and accurately provide a proper summary of the inputted file. 
 
 # Progress:
 Currently, the usecases that are operational are:
@@ -22,6 +19,15 @@ To build the project, one needs to go in both the front and back end directories
 - Other terminai will handle the back-end, go to /src/back-end/ then run "node server.js"
 4. The website should appear as localhost:4200/ where functionality is now enabled
 5. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
+
+## Contribution
+For developers that wish to contribute or obtain the code:
+
+1. Fork the ReWrite project
+2. Create an independent feature branch (`git branch 'branch-name'`)
+3. Commit feature changes with commit message (`git commit -m 'summary of commit'`)
+4. Push changes on to the independent feature branch (`git push origin 'branch-name'`)
+5. Create a pull request that will be reviewed and eventually merged to main branch
 
 ## Repo Layout
 Inside of our src file you will find the directories for each of the projects major components. 
