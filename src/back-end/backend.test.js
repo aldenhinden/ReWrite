@@ -23,6 +23,19 @@ describe('prompting', () => {
                 expect(result_mem).to.equal("")
                 expect(result_out).to.equal("GPT_OUT_ERROR")
         })
+    }),
+
+    describe('truncate_extra_words()', () => {
+        it('truncate_extra_words() should not modify strings shorter than max_words', () => {
+            const test_string = "hello test"
+            const result = server.truncate_extra_words(test_string, 500)
+            expect(result).to.equal(test_string)
+        }),
+        it('truncate_extra_words() should truncate correct amount of words', () => {
+            const test_string = "hello test word word word final"
+            const result = server.truncate_extra_words(test_string, 5)
+            expect(result).to.equal("hello test word word word")
+        })
     })
 
 });
