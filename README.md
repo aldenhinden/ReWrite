@@ -20,7 +20,7 @@ To build the project, one needs to go in both the front and back end directories
 4. The website should appear as localhost:4200/ where functionality is now enabled
 5. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
-## Contribution
+# Developer Contribution
 For developers that wish to contribute or obtain the code:
 
 1. Fork the ReWrite project
@@ -29,7 +29,10 @@ For developers that wish to contribute or obtain the code:
 4. Push changes on to the independent feature branch (`git push origin 'branch-name'`)
 5. Create a pull request that will be reviewed and eventually merged to main branch
 
-## Repo Layout
+Testing:
+In order to test the back-end code, navigate to `src/back-end/backend.test.js`. This file contains Mocha tests run using the Chai testing framework for the `server.js` file which contains the code for the back-end. You can run test suites by running the individual `describe()` functions, or by running their `it()` functions directly within the suite. To add tests for `server.js`, you can follow the infrastructure of the Chai `describe/it` functions to add new testing suites and specific tests within each suite; simply add your tests below the existing ones. All tests in this file will be run for the back-end using the Node.js CI workflow by Github Actions on each push. 
+
+# Repo Layout
 Inside of our src file you will find the directories for each of the projects major components. 
 
 [ui](https://github.com/aldenhinden/ReWrite/tree/main/src/ui) contains all of the front-end website code.
