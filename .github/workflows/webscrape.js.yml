@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-          working-directory: src/back-end
+          working-directory: .
 
     strategy:
       matrix:
@@ -31,4 +31,4 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm test -- --no-watch --no-progress
