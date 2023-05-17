@@ -1,8 +1,5 @@
 # ReWrite
-ReWrite is a project developed in CSE 403: Software Engineering at the University of Washington. 
-
-## Overview
-The goal of this website is to make things like complex scientific research papers more easily understandable for the average person. We provide an intuitive UI, giving the user the ability to input a URL to a research paper, for example. We then use the ChatGPT API alongside some prompt engineering in order to procure an organized summary of the input paper. 
+ReWrite is a website aimed at simplifying and summarizing text contents from a PDF document. The tool can be applied on complex scientific research papers, unorthodox formatted documents, or just about any PDF documents to genereate a simplified summary of the inputted file's text. On the website, we provide a simplified layout, giving the user the ability to easily navigate while trying the tool. The tools utilized are OpenAI's API alongside prompt engineering in roder to effectively and accurately provide a proper summary of the inputted file. 
 
 # Progress:
 Currently, the usecases that are operational are:
