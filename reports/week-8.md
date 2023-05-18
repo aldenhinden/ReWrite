@@ -34,7 +34,7 @@ Responsibility:
 
 
 2. Alden Hinden
-    - Progress Update: Implemented some error checking — front-end alerts to the user for non-PDF uploads + not inputting an API key. Completed setup of back-end Continuous Integration workflow with Node.js by Github Actions. 
+    - Progress Update: Implemented some error checking — front-end alerts to the user for non-PDF uploads + not inputting an API key. Completed setup of back-end Continuous Integration workflow with Node.js by Github Actions; workflow will run tests in `backend.test.js` on each push. 
 
     - Last Week's Goals: 
         - Expand websraping.
