@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config()
 
-module.exports = { simplify };
+module.exports = { run_completion, simplify, simplify_testable, extract_parts, truncate_extra_words, dress_input, };
 
 async function run_completion(key, file_text) {
     try {

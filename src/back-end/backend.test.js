@@ -12,7 +12,7 @@ describe('server', () => {
 });
 
 //act like gpt for formatting, but instead of simplifying just call toUpperCase
-function gpt_simulator(prompt) {
+function gpt_simulator(key, prompt) {
     let input_idx = prompt.search("Input:")
     let input_string = prompt.substring(input_idx + 7)
     let out_str = "Memory_New: oldmem12345 Output: " + input_string.toUpperCase()
@@ -21,7 +21,7 @@ function gpt_simulator(prompt) {
 
 async function simplify_test_1 () {
    let input_str = "simplify this please"
-   let result = await translate.simplify_testable("test_doc_out.pdf", input_str, gpt_simulator)
+   let result = await translate.simplify_testable("test_doc_out.pdf", input_str, "sample-key", gpt_simulator)
    expect(result).to.equal(" " + input_str.toUpperCase())
 }
 
@@ -34,7 +34,7 @@ async function simplify_test_2 () {
         input_str_2 += input_str_1
     }
 
-    let result = await translate.simplify_testable("test_doc_out.pdf", input_str_2, gpt_simulator)
+    let result = await translate.simplify_testable("test_doc_out.pdf", input_str_2, "sample-key", gpt_simulator)
     expect(result).to.equal(" " + input_str.toUpperCase())
 }
 
