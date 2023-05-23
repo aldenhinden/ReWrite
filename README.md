@@ -12,15 +12,11 @@ Currently, the usecases that are operational are:
 ## Setup
 To build the project, one needs to go in both the front and back end directories and build each project then start both servers up
 
-1. Download the latest version of npm
-2. Visit the directories of the front and back end and run "npm install" which will build the necessary dependencies
-- Front-End: go to /src/ui/ then perform "npm install" (Angular should be version 15.2.0 or 15.2.6)
-- Back-End: go to /src/backend/ then perform "npm install"
-3. Open up two terminals, one for each server (front and back end)
-- One terminal will handle the front-end, go to /src/ui/ then run "ng serve --open"
-- Other terminai will handle the back-end, go to /src/back-end/ then run "node server.js"
-4. The website should appear as localhost:4200/ where functionality is now enabled
-5. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
+1. Download the latest version of npm and [make](https://www.gnu.org/software/make/manual/make.html). 
+2. From the home directory, run `make install` which will build the necessary dependencies. The Angular version used should be version 15.2.0 or 15.2.6.
+3. Run `make run`, which will build and start the front-end website and launch the back-end server.
+  - The website should appear as localhost:4200/ where functionality is now enabled, and the back-end server should be listening from port 3000. 
+6. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
 ## Using the Product
 1. Proceed to Translation page
