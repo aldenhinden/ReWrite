@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=18.10.0"
+  },
   "dependencies": {
     "@angular/material": "^16.0.0",
     "dotenv": "^16.0.3",
