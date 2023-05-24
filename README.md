@@ -16,6 +16,9 @@ To build the project, one needs to go in both the front and back end directories
 2. From the home directory, run `make install` which will build the necessary dependencies. The Angular version used should be version 15.2.0 or 15.2.6.
 3. Run `make run`, which will build and start the front-end website and launch the back-end server.
   - The website should appear as localhost:4200/ where functionality is now enabled, and the back-end server should be listening from port 3000. 
+  - Alternatively, if `make` is not installed, this can be achieved via opening two terminals and running the following commands:
+    - One terminal will handle the front-end, go to /src/ui/ then run "ng serve --open"
+    - Other terminai will handle the back-end, go to /src/back-end/ then run "node server.js"
 6. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
 ## Using the Product
