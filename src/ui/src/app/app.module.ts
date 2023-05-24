@@ -8,8 +8,6 @@ import { HomeComponent } from './modules/home/home.component';
 import { TranslateComponent } from './modules/translate/translate.component';
 import { NavbarComponent } from './modules/shared/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './modules/login/login.component';
-import { DownloadService } from './modules/service/download.service';
 
 
 @NgModule({
@@ -18,7 +16,6 @@ import { DownloadService } from './modules/service/download.service';
     HomeComponent,
     TranslateComponent,
     NavbarComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
