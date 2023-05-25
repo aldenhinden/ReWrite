@@ -18,7 +18,7 @@ To build the project, one needs to go in both the front and back end directories
   - The website should appear as localhost:4200/ where functionality is now enabled, and the back-end server should be listening from port 3000. 
   - Alternatively, if `make` is not installed, this can be achieved via opening two terminals and running the following commands:
     - One terminal will handle the front-end, go to /src/ui/ then run "ng serve --open"
-    - Other terminai will handle the back-end, go to /src/back-end/ then run "node server.js"
+    - Other terminal will handle the back-end, go to /src/back-end/ then run "node server.js"
 6. Sample pdfs for testing can be found in src/back-end/docs/samplePDFs
 
 ## Using the Product
