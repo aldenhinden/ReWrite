@@ -13,17 +13,22 @@ app.use(cors());
 
 let API_KEY = "";
 
-// WEB-SCRAPE: define the routing to perform scrape on input file
+// Receives information from the client side to summarize the given PDF file
 app.post('/upload/', fileUpload( {createParentPath: true}), async (req, res) => {
-    if (req.files == null) {
+    // Error handling of: no file, invalid PDF file, no translation type was selected
+    if (req.files == null || req.files.doc.mimetype !== 'application/pdf' || req.body.type == "") {
         API_KEY = "";
-        return res.json({ status: "error", text: "No file provided" });
+        let error_text = "";
+        if (req.files == null) {
+            error_text = "No file provided";
+        } else if (req.files.doc.mimetype !== 'application/pdf') {
+            error_text = "Uploaded file is not a PDF.";
+        } else if (req.body.type == "") {
+            error_text = "Translation type was not selected.";
+        }
+        return res.json({ status: "error", text: error_text });
     }
 
-    // check if uploaded file is a pdf
-    if (req.files.doc.mimetype !== 'application/pdf') {
-        return res.json({ status: "error", text: "Uploaded file is not a PDF." });
-    }
 
     // saves uploaded file into memory into docs
     console.log(req.files.doc);
@@ -38,7 +43,15 @@ app.post('/upload/', fileUpload( {createParentPath: true}), async (req, res) => 
         this.API_KEY = req.body.key;
 
         // Sends file text to OpenAI's API to summarize
-        let result = await translate.simplify(req.files.doc.name, pdf_data.text, this.API_KEY);
+        let result;
+        if (req.body.type == "deep") {
+            result = await translate.simplify(req.files.doc.name, pdf_data.text, this.API_KEY);
+        } else if (req.body.type == "simple") {
+            // result = <translate.quicksimplify...
+            console.log("quick simplify");
+            return;
+        }
+
         if (result.startsWith("##ERROR##")) {
             return res.json({ status: "error", text: result });
         } else {

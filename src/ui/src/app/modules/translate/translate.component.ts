@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { HttpParams } from '@angular/common/http'
-import { Base64 } from 'js-base64';
-import * as fileSaver from 'file-saver';
 import { DownloadService } from '../service/download.service';
 
 
@@ -21,16 +18,20 @@ export class TranslateComponent {
     private downloadService: DownloadService
     ) { }
 
+  // Information that keeps track of changes by the user
   EMPTY_FORM = new FormData();
   curr_file = this.EMPTY_FORM;
   file_name:string = "";
   api_key = "";
+  translation_type = "";
   translation = "Waiting for translation...";
 
+  // Stores API Key information when user updates the API Key text box
   onKeyUpload(key: string) {
     this.api_key = key;
   }
 
+  // Saves the current PDF file that the user uploaded
   onFileUpload(event: any) {
     if (event.target.files.length > 0) {
       const upload = event.target.files[0];
@@ -49,16 +50,33 @@ export class TranslateComponent {
     }
   }
 
+  // Saves the type of summarization for the uploaded PDF file that the user selected
+  onTranslationType(type: string) {
+    if (type != "default") {
+      this.translation_type = type;
+      console.log(this.translation_type);
+    }
+  }
+
+  // Sends the PDF file information, API Key information, and type of translation to the backend server to handle summarization
   onTranslate() {
-    if (!this.api_key) {
+    if (!this.api_key || !this.translation_type || !this.file_name) {
       // error check user input API key
-      alert("Please provide an API key before translating.");
+      if (!this.api_key) {
+        alert("Please provide an API key before translating.");
+      } else if (!this.file_name) {
+        alert("Please upload a PDF file.");
+      } else if (!this.translation_type) {
+        alert("Please select a translation type.");
+      }
       return;
     }
+
     this.translation = "Waiting for translation...";
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
     this.curr_file.set('key', this.api_key);
+    this.curr_file.set('type', this.translation_type);
     this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
