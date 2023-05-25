@@ -49,8 +49,10 @@ Responsibility:
 
 4. Ben Ihrig
     - Progress Update:
+        - Partial completion of algorithms for alternate translation buttons
 
     - Last Week's Goals: 
-
+        - Add backend functionality for fast simplification and repeated simplification (partially finished)
     - This Week's Goals
+        - Finish the above implementation and thoroughly test for final release
 
