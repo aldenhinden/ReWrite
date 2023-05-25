@@ -76,6 +76,7 @@ export class TranslateComponent {
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
     this.curr_file.set('key', this.api_key);
+    this.curr_file.set('type', this.translation_type);
     this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
