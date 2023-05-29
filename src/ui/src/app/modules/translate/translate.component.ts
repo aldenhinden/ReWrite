@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { DownloadService } from '../service/download.service';
 
 
 @Component({
@@ -15,7 +14,6 @@ export class TranslateComponent {
 
   constructor(
     private http:HttpClient,
-    private downloadService: DownloadService
     ) { }
 
   // Information that keeps track of changes by the user
@@ -25,6 +23,7 @@ export class TranslateComponent {
   api_key = "";
   translation_type = "";
   translation = "Waiting for translation...";
+  loading = false;
 
   // Stores API Key information when user updates the API Key text box
   onKeyUpload(key: string) {
@@ -59,7 +58,7 @@ export class TranslateComponent {
   }
 
   // Sends the PDF file information, API Key information, and type of translation to the backend server to handle summarization
-  onTranslate() {
+  onTranslate(event: any) {
     if (!this.api_key || !this.translation_type || !this.file_name) {
       // error check user input API key
       if (!this.api_key) {
@@ -72,26 +71,26 @@ export class TranslateComponent {
       return;
     }
 
+    // Display translation process on webpage
     this.translation = "Waiting for translation...";
+    this.loading = true;
+    event.target.disabled = true;
+
     console.log("API KEY: " + this.api_key);
     console.log(this.curr_file);
     this.curr_file.set('key', this.api_key);
     this.curr_file.set('type', this.translation_type);
+    
+    // Sends information to backend server to process
     this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
       let simplified = res.text;
-
       this.translation = simplified;
 
-      // this.downloadService.downloadFile(this.file_name).subscribe( res => {
-      //   if (res) {
-      //     console.log("DOWNLOADING");
-      //     fileSaver.saveAs(new Blob([res], {type: 'application/pdf'}), "simplified_"+this.file_name);
-      //   }
-      // })
-
-
+      // Restores webpage back to normal
+      this.loading = false;
+      event.target.disabled = false;
     });
   }
 }
