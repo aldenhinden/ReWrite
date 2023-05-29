@@ -38,6 +38,7 @@
         Translate button that submits the request to the backend which will handle the summarization process
     -->
     <div class="translate">
-        <button type="button" (click)="onTranslate()">Translate</button>
+        <img class="load" *ngIf="loading" src="../../../assets/loading.gif"/>
+        <button type="button" [disabled]="loading" (click)="onTranslate($event)">Translate</button>
     </div>
 </div>
