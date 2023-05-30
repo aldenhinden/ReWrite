@@ -47,9 +47,8 @@ app.post('/upload/', fileUpload( {createParentPath: true}), async (req, res) => 
         if (req.body.type == "deep") {
             result = await translate.simplify(req.files.doc.name, pdf_data.text, this.API_KEY);
         } else if (req.body.type == "simple") {
-            // result = <translate.quicksimplify...
-            console.log("quick simplify");
-            return;
+            console.log("running quick simplify");
+            result = await translate.simplify_fast(req.files.doc.name, pdf_data.text, this.API_KEY);
         }
 
         if (result.startsWith("##ERROR##")) {
