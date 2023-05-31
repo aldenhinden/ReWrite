@@ -29,13 +29,7 @@ app.post('/upload/', fileUpload( {createParentPath: true}), async (req, res) => 
         return res.json({ status: "error", text: error_text });
     }
 
-
-    // saves uploaded file into memory into docs
     console.log(req.files.doc);
-    fs.writeFileSync('./docs/uploaded/'+req.files.doc.name, req.files.doc.data);
-
-    // read the file into memory from routing
-    // const file_buffer = fs.readFileSync('docs/uploaded/'+req.files.doc.name);
 
     // parse the PDF and extract the text content
     let pdf_data =  await scrape.parsePDF(req.files.doc.data);
@@ -46,7 +40,7 @@ app.post('/upload/', fileUpload( {createParentPath: true}), async (req, res) => 
         let result;
         if (req.body.type == "deep") {
             result = await translate.simplify(req.files.doc.name, pdf_data.text, this.API_KEY);
-        } else if (req.body.type == "simple") {
+        } else if (req.body.type == "quick") {
             console.log("running quick simplify");
             result = await translate.simplify_fast(req.files.doc.name, pdf_data.text, this.API_KEY);
         }
