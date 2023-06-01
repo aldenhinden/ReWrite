@@ -167,14 +167,14 @@ function dress_input(input, memory, max_output_size, memory_size) {
 }
 
 function dress_input_simple(input, max_output_size) {
-    let full_prompt = "" +
-    "Please write a simplification and summarization of the following " +
+    let full_prompt = "\n\n" +
+    "Please write a simplification and summarization of the preceeding " +
     "text so that it can be understood easily by a layman, keeping use of jargon to a minimum," +
     "while attempting to preserve all relevant information content as well as possible." +
     "If jargon must be used, please give a brief explanation of each complicated term." +
     "This simplification must not exceed " + max_output_size.toString() + "words." +
-    "Do not repeat a copy of the original text before providing your summary.\n\n"
+    "\n\n Summary: "
 
-    full_prompt += input
+    full_prompt = input + full_prompt
     return full_prompt
 }
