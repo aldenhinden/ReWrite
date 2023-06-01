@@ -87,7 +87,7 @@ export class TranslateComponent {
     if (isDevMode()) {
       address = 'http://45.77.208.169:3000';
     }
-    this.http.post(address+'/upload', this.curr_file).subscribe(response => {
+    this.http.post('http://45.77.208.169:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
       let simplified = res.text;

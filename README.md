@@ -1,5 +1,5 @@
 # ReWrite
-ReWrite is a website aimed at simplifying and summarizing text contents from a PDF document. The tool can be applied on complex scientific research papers, unorthodox formatted documents, or just about any PDF documents to genereate a simplified summary of the inputted file's text. On the website, we provide a simplified layout, giving the user the ability to easily navigate while trying the tool. The tools utilized are OpenAI's API alongside prompt engineering in roder to effectively and accurately provide a proper summary of the inputted file. 
+ReWrite is a website aimed at simplifying and summarizing text contents from a PDF document. The tool can be applied on complex scientific research papers, unorthodox formatted documents, or just about any PDF documents to genereate a simplified summary of the inputted file's text. On the website, we provide a simplified layout, giving the user the ability to easily navigate while trying the tool. The tools utilized are OpenAI's API alongside prompt engineering in order to effectively and accurately provide a proper summary of the inputted file. 
 
 # Progress:
 Currently, the usecases that are operational are:
