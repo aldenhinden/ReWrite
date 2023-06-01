@@ -31,11 +31,11 @@ Responsibility:
 
 
 2. Alden Hinden
-    - Progress Update:
+    - Progress Update: Full deployment of the website onto a server using Vultr. Experimented with various possibilities for hosting such as Render.com and Netlify.com, but wound up creating a full server using Vultr.com. Deployed a development version and then also finally got a working production version. The project is now available from our new [website](http://45.77.208.169/).
 
-    - Last Week's Goals: 
+    - Last Week's Goals: Testing and deployment. 
 
-    - This Week's Goals: 
+    - This Week's Goals: Nothing... complete deployment? Sorta already finished everything necessary. 
 
 
 3. Yusuf Farah
