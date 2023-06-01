@@ -82,7 +82,7 @@ export class TranslateComponent {
     this.curr_file.set('type', this.translation_type);
     
     // Sends information to backend server to process
-    this.http.post('http://localhost:3000/upload', this.curr_file).subscribe(response => {
+    this.http.post('45.77.208.169:3000/upload', this.curr_file).subscribe(response => {
       console.log(response);
       let res = JSON.parse(JSON.stringify(response));
       let simplified = res.text;
