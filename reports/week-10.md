@@ -32,9 +32,10 @@ Responsibility:
 
 
 3. Yusuf Farah
-    - Progress Update: 
+    - Progress Update: Back-end is functional and running smoothly. Ready for presentation.
 
     - Last Week's Goals:
+        - Remain on call in case John needs help with front-end ✔️
 
 
 
