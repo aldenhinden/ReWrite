@@ -39,11 +39,15 @@ Responsibility:
 
 
 3. Yusuf Farah
-    - Progress Update: 
+    - Progress Update: Finished error handling for chatGPT API requests, also helped Alden in the initial stages of deployment.
 
     - Last Week's Goals:
+        - Establish error handling for chatGPT API requests ✔️
+        - Assisting in initial stages of deployment ✔️
 
-    - This Week's Goals
+    - This Week's Goals:
+        - Remain on call in case John needs help with front-end.
+
 
 
 
