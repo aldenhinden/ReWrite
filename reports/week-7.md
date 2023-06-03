@@ -43,12 +43,16 @@ Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
         - Assist with any other project expansion. 
 
 3. Yusuf Farah
-    - Progress Update: 
+    - Progress Update: Completed integration of ChatGPT API with Node.js server so now we can communicate with the chatGPT API, sending
+    requests and recieving responses. Was not able to work on databasing due to the ChatGPT integration taking longer than previously thought.
 
     - Last Week's Goals:
+        - Finish integration of ChatGPT API with Node.js server ✔️
+        - Create rough draft of database schema
 
-    - This Week's Goals
-
+    - This Week's Goals:
+        - Finish integration of ChatGPT API with Node.js server ✔️
+        - Create rough draft of database schema
 
 
 4. Ben Ihrig
