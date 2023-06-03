@@ -51,8 +51,8 @@ Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
         - Create rough draft of database schema
 
     - This Week's Goals:
-        - Establish error handling for chatGPT API requests
         - Create rough draft of database schema
+        - Assist in debugging for other parts of the website
 
 
 4. Ben Ihrig

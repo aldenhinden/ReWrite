@@ -47,17 +47,14 @@ Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
 
 
 3. Yusuf Farah
-    - Progress Update: 
-        - After considering the design and usage of our website, we decided that databasing and login/authentication were not needed, thus
-        we dropped those features and so this week, I handled all the error handling for the chatGPT API.
+    - Progress Update: After considering the design and usage of our website, we decided that databasing and login/authentication were not needed, thus we dropped those features and so this week, I handled all the error handling for the chatGPT API.
 
     - Last Week's Goals:
-        - Establish error handling for chatGPT API requests
-        - Create rough draft of database schema
+        - Assist in debugging for other parts of the website ✔️
+        - Create rough draft of database schema (feature cut due to design decisons)
 
     - This Week's Goals
-        - Establish error handling for chatGPT API requests ✔️
-        - Create rough draft of database schema (feature cut due to design decisons)
+        - Establish error handling for chatGPT API requests
 
 
 4. Ben Ihrig
