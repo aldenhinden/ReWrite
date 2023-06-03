@@ -51,7 +51,7 @@ Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
         - Create rough draft of database schema
 
     - This Week's Goals:
-        - Finish integration of ChatGPT API with Node.js server ✔️
+        - Establish error handling for chatGPT API requests
         - Create rough draft of database schema
 
 

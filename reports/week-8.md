@@ -10,11 +10,12 @@ Long-Term Goal: Improve the webpage design consdering how there is only two tabs
 Responsibiltiy: John Li
 
 ### Back-End:
-Progress: 
+Progress: Back-end functionality is complete, with requests being sent from front-end to back-end and replies going through smoothly 
+from back-end to front-end as well.  
 
-Long-Term Goal: 
+Long-Term Goal: Setting up more thorough testing and error handling to deal with bugs that the user could most likely encounter. 
 
-Responsibility: 
+Responsibility: Ben Ihrig, Alden Hinden, Yusuf Farah
 
 ## Contributions
 1. John Li
@@ -47,11 +48,16 @@ Responsibility:
 
 3. Yusuf Farah
     - Progress Update: 
+        - After considering the design and usage of our website, we decided that databasing and login/authentication were not needed, thus
+        we dropped those features and so this week, I handled all the error handling for the chatGPT API.
 
     - Last Week's Goals:
+        - Establish error handling for chatGPT API requests
+        - Create rough draft of database schema
 
     - This Week's Goals
-
+        - Establish error handling for chatGPT API requests ✔️
+        - Create rough draft of database schema (feature cut due to design decisons)
 
 
 4. Ben Ihrig
